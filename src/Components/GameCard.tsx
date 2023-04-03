@@ -1,26 +1,41 @@
-import { Card, CardBody, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  HStack,
+  Heading,
+  Image,
+  Spacer,
+  Text,
+} from "@chakra-ui/react";
 import PlatformIcon from "./PlatformIcon";
-
-interface Platforms {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platforms } from "../Hooks/useFetchGame";
+import CriticBadge from "./CriticBadge";
 
 interface props {
   id: number;
   name: string;
   background_image: string;
+  metacritic: number;
   platforms: { platform: Platforms }[];
 }
 
-function GameCard({ id, name, background_image, platforms }: props) {
+function GameCard({
+  id,
+  name,
+  background_image,
+  platforms,
+  metacritic,
+}: props) {
   return (
     <>
-      <Card maxW={"sm"} margin={3}>
-        <Image src={background_image} alt=""></Image>
+      <Card maxW={"sm"} margin={3} borderRadius={"xl"}>
+        <Image src={background_image} alt="" borderTopRadius={"xl"}></Image>
         <CardBody>
-          <PlatformIcon platformIcon={platforms.map((p) => p.platform)} />
+          <HStack>
+            <PlatformIcon platformIcon={platforms.map((p) => p.platform)} />
+            <Spacer />
+            <CriticBadge rating={metacritic} />
+          </HStack>
           <Heading size="sm" textTransform="uppercase">
             {name}
           </Heading>

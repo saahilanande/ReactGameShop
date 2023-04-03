@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import ApiClient from "../Services/Api-Client";
 
-interface Platforms {
+export interface Platforms {
   id: number;
   name: string;
   slug: string;
 }
 
-interface Gameinfo {
+export interface Gameinfo {
   id: number;
   name: string;
   background_image: string;
+  metacritic: number;
   platforms: { platform: Platforms }[];
 }
 

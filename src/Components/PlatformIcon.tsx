@@ -8,12 +8,7 @@ import {
   FaAndroid,
 } from "react-icons/fa";
 import { SiNintendoswitch } from "react-icons/si";
-
-interface Platforms {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platforms } from "../Hooks/useFetchGame";
 
 interface props {
   platformIcon: Platforms[];
