@@ -15,6 +15,7 @@ function GameGrid() {
           id={data.id}
           key={data.id}
           metacritic={data.metacritic}
+          added={data.added}
         />
       ))}
     </SimpleGrid>

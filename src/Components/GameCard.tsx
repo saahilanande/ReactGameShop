@@ -10,12 +10,15 @@ import {
 import PlatformIcon from "./PlatformIcon";
 import { Platforms } from "../Hooks/useFetchGame";
 import CriticBadge from "./CriticBadge";
+import TotalDownloads from "./TotalDownloads";
+import CropImage from "../Services/Url-Client";
 
 interface props {
   id: number;
   name: string;
   background_image: string;
   metacritic: number;
+  added: number;
   platforms: { platform: Platforms }[];
 }
 
@@ -25,11 +28,16 @@ function GameCard({
   background_image,
   platforms,
   metacritic,
+  added,
 }: props) {
   return (
     <>
       <Card maxW={"sm"} margin={3} borderRadius={"xl"}>
-        <Image src={background_image} alt="" borderTopRadius={"xl"}></Image>
+        <Image
+          src={CropImage(background_image)}
+          alt=""
+          borderTopRadius={"xl"}
+        ></Image>
         <CardBody>
           <HStack>
             <PlatformIcon platformIcon={platforms.map((p) => p.platform)} />
@@ -39,6 +47,7 @@ function GameCard({
           <Heading size="sm" textTransform="uppercase">
             {name}
           </Heading>
+          <TotalDownloads downloads={added} />
         </CardBody>
       </Card>
     </>

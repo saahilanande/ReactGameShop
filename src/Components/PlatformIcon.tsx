@@ -29,7 +29,7 @@ function PlatformIcon({ platformIcon }: props) {
       {platformIcon.map(
         (data) =>
           iconMap[data.slug] && (
-            <Icon marginInline={1} as={iconMap[data.slug]}></Icon>
+            <Icon key={data.id} marginInline={1} as={iconMap[data.slug]}></Icon>
           )
       )}
     </>

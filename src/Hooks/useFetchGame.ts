@@ -12,6 +12,7 @@ export interface Gameinfo {
   name: string;
   background_image: string;
   metacritic: number;
+  added: number;
   platforms: { platform: Platforms }[];
 }
 
