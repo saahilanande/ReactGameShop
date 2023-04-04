@@ -26,13 +26,22 @@ const useFetchGame = () => {
 
   const [appError, setAppError] = useState("");
 
+  const [isloading, setIsLoading] = useState(false);
+
   useEffect(() => {
+    setIsLoading(true);
     ApiClient.get<Apidata>("/games")
-      .then((res) => setGameInfo(res.data.results))
-      .catch((err) => setAppError(err.message));
+      .then((res) => {
+        setGameInfo(res.data.results);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setAppError(err.message);
+        setIsLoading(false);
+      });
   }, []);
 
-  return { gameinfo, appError };
+  return { gameinfo, appError, isloading };
 };
 
 export default useFetchGame;

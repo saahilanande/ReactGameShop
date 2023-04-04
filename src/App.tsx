@@ -12,12 +12,12 @@ function App() {
           <Navbar />
         </GridItem>
         <Show above="lg">
-          <GridItem area="aside" bg="black">
+          <GridItem area="aside" bg="white">
             aside
           </GridItem>
         </Show>
-        <GridItem area="main" bg="orange.500">
-          <GameGrid/>
+        <GridItem area="main" bg="red.600">
+          <GameGrid />
         </GridItem>
       </Grid>
     </>

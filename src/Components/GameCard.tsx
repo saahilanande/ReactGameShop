@@ -5,7 +5,6 @@ import {
   Heading,
   Image,
   Spacer,
-  Text,
 } from "@chakra-ui/react";
 import PlatformIcon from "./PlatformIcon";
 import { Platforms } from "../Hooks/useFetchGame";
@@ -39,7 +38,7 @@ function GameCard({
           borderTopRadius={"xl"}
         ></Image>
         <CardBody>
-          <HStack>
+          <HStack flex={"wrap"}>
             <PlatformIcon platformIcon={platforms.map((p) => p.platform)} />
             <Spacer />
             <CriticBadge rating={metacritic} />

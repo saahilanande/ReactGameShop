@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { SiNintendoswitch } from "react-icons/si";
 import { Platforms } from "../Hooks/useFetchGame";
+import { wrap } from "framer-motion";
 
 interface props {
   platformIcon: Platforms[];
