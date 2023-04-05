@@ -2,9 +2,16 @@ import { SimpleGrid } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import useFetchGame from "../Hooks/useFetchGame";
 import CardSkeleton from "./CardSkeleton";
+import { Genres } from "../Hooks/useFetchGenres";
 
-function GameGrid() {
-  const { gameinfo, appError, isloading } = useFetchGame();
+interface props {
+  selectedGenre: Genres | null;
+}
+
+function GameGrid({ selectedGenre }: props) {
+  const { gameinfo, appError, isloading } = useFetchGame(selectedGenre, [
+    selectedGenre?.id,
+  ]);
 
   const skeletonNo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

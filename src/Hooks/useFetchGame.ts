@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import ApiClient from "../Services/Api-Client";
+import { Genres } from "./useFetchGenres";
+import { AxiosRequestConfig } from "axios";
 
 export interface Platforms {
   id: number;
@@ -21,25 +23,28 @@ interface Apidata {
   results: Gameinfo[];
 }
 
-const useFetchGame = () => {
+const useFetchGame = (genres: Genres | null, deps?: any[]) => {
   const [gameinfo, setGameInfo] = useState<Gameinfo[]>([]);
 
   const [appError, setAppError] = useState("");
 
   const [isloading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
-    ApiClient.get<Apidata>("/games")
-      .then((res) => {
-        setGameInfo(res.data.results);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setAppError(err.message);
-        setIsLoading(false);
-      });
-  }, []);
+  useEffect(
+    () => {
+      setIsLoading(true);
+      ApiClient.get<Apidata>("/games", { params: { genres: genres?.id } })
+        .then((res) => {
+          setGameInfo(res.data.results);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setAppError(err.message);
+          setIsLoading(false);
+        });
+    },
+    deps ? [...deps] : []
+  );
 
   return { gameinfo, appError, isloading };
 };

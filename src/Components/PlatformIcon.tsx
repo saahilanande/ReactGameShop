@@ -9,7 +9,6 @@ import {
 } from "react-icons/fa";
 import { SiNintendoswitch } from "react-icons/si";
 import { Platforms } from "../Hooks/useFetchGame";
-import { wrap } from "framer-motion";
 
 interface props {
   platformIcon: Platforms[];
@@ -30,7 +29,11 @@ function PlatformIcon({ platformIcon }: props) {
       {platformIcon.map(
         (data) =>
           iconMap[data.slug] && (
-            <Icon key={data.id} marginInline={1} as={iconMap[data.slug]}></Icon>
+            <Icon
+              key={data.id}
+              marginInline={0.5}
+              as={iconMap[data.slug]}
+            ></Icon>
           )
       )}
     </>

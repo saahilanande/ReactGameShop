@@ -1,33 +1,53 @@
 import {
+  Box,
+  Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
-  Text,
-  useDisclosure,
+  Spinner,
+  color,
 } from "@chakra-ui/react";
-import useFetchGenres from "../Hooks/useFetchGenres";
+import useFetchGenres, { Genres } from "../Hooks/useFetchGenres";
 
-function GenreMenu() {
-  const { genreInfo, navErrors } = useFetchGenres();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+interface props {
+  onGenreClick: (genre: Genres) => void;
+}
+
+function GenreMenu({ onGenreClick }: props) {
+  const { genreInfo, navErrors, isloading } = useFetchGenres();
+
+  if (navErrors) return null;
+
+  if (isloading) return <Spinner />;
 
   return (
     <>
-      <List>
-        {genreInfo.map((data) => (
-          <ListItem key={data.id}>
-            <HStack spacing={2} padding={2}>
-              <Image
-                boxSize={"35px"}
-                src={data.image_background}
-                borderRadius={5}
-              ></Image>
-              <Text>{data.name}</Text>
-            </HStack>
-          </ListItem>
-        ))}
-      </List>
+      <Box marginLeft={5}>
+        <Heading size={"lg"}>Genres</Heading>
+        <List padding={3}>
+          {genreInfo.map((data) => (
+            <ListItem key={data.id}>
+              <HStack spacing={2} padding={2}>
+                <Image
+                  boxSize={"35px"}
+                  src={data.image_background}
+                  borderRadius={5}
+                ></Image>
+                <Button
+                  onClick={() => {
+                    onGenreClick(data);
+                  }}
+                  variant={"ghost"}
+                >
+                  {data.name}
+                </Button>
+              </HStack>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
     </>
   );
 }
