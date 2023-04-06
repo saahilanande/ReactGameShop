@@ -3,15 +3,19 @@ import GameCard from "./GameCard";
 import useFetchGame from "../Hooks/useFetchGame";
 import CardSkeleton from "./CardSkeleton";
 import { Genres } from "../Hooks/useFetchGenres";
+import { Platforms } from "../Hooks/useFetchPlatform";
 
 interface props {
   selectedGenre: Genres | null;
+  selectedPlatform: Platforms | null;
 }
 
-function GameGrid({ selectedGenre }: props) {
-  const { gameinfo, appError, isloading } = useFetchGame(selectedGenre, [
-    selectedGenre?.id,
-  ]);
+function GameGrid({ selectedGenre, selectedPlatform }: props) {
+  const { gameinfo, appError, isloading } = useFetchGame(
+    selectedGenre,
+    selectedPlatform,
+    [selectedGenre?.id]
+  );
 
   const skeletonNo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

@@ -23,7 +23,11 @@ interface Apidata {
   results: Gameinfo[];
 }
 
-const useFetchGame = (genres: Genres | null, deps?: any[]) => {
+const useFetchGame = (
+  genres: Genres | null,
+  platforms: Platforms | null,
+  deps?: any[]
+) => {
   const [gameinfo, setGameInfo] = useState<Gameinfo[]>([]);
 
   const [appError, setAppError] = useState("");
@@ -33,7 +37,9 @@ const useFetchGame = (genres: Genres | null, deps?: any[]) => {
   useEffect(
     () => {
       setIsLoading(true);
-      ApiClient.get<Apidata>("/games", { params: { genres: genres?.id } })
+      ApiClient.get<Apidata>("/games", {
+        params: { genres: genres?.id, platforms: platforms?.id },
+      })
         .then((res) => {
           setGameInfo(res.data.results);
           setIsLoading(false);

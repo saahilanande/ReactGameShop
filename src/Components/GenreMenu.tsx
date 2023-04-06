@@ -13,9 +13,10 @@ import useFetchGenres, { Genres } from "../Hooks/useFetchGenres";
 
 interface props {
   onGenreClick: (genre: Genres) => void;
+  selectedGenre: Genres | null;
 }
 
-function GenreMenu({ onGenreClick }: props) {
+function GenreMenu({ onGenreClick, selectedGenre }: props) {
   const { genreInfo, navErrors, isloading } = useFetchGenres();
 
   if (navErrors) return null;
@@ -36,10 +37,13 @@ function GenreMenu({ onGenreClick }: props) {
                   borderRadius={5}
                 ></Image>
                 <Button
+                  fontWeight={
+                    data.id === selectedGenre?.id ? "extrabold" : "normal"
+                  }
                   onClick={() => {
                     onGenreClick(data);
                   }}
-                  variant={"ghost"}
+                  variant={data.id === selectedGenre?.id ? "solid" : "ghost"}
                 >
                   {data.name}
                 </Button>
