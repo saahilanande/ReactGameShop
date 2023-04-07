@@ -14,7 +14,7 @@ function GameGrid({ selectedGenre, selectedPlatform }: props) {
   const { gameinfo, appError, isloading } = useFetchGame(
     selectedGenre,
     selectedPlatform,
-    [selectedGenre?.id]
+    [selectedGenre?.id, selectedPlatform?.id]
   );
 
   const skeletonNo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

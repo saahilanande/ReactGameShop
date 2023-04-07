@@ -5,7 +5,12 @@ import GenreMenu from "./Components/GenreMenu";
 import { useState } from "react";
 import { Genres } from "./Hooks/useFetchGenres";
 import PlatfromFilter from "./Components/PlatfromFilter";
-import { Platforms } from "./Hooks/useFetchGame";
+import { Platforms } from "./Hooks/useFetchPlatform";
+
+interface queryData {
+  genre: Genres;
+  platform: Platforms;
+}
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);

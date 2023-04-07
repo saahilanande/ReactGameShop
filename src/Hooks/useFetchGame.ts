@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import ApiClient from "../Services/Api-Client";
 import { Genres } from "./useFetchGenres";
-import { AxiosRequestConfig } from "axios";
 
 export interface Platforms {
   id: number;

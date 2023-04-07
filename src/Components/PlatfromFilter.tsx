@@ -1,14 +1,14 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Button,
+  Image,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   SkeletonText,
 } from "@chakra-ui/react";
-import useFetchPlatforms from "../Hooks/useFetchPlatform";
-import { Platforms } from "../Hooks/useFetchGame";
+import useFetchPlatforms, { Platforms } from "../Hooks/useFetchPlatform";
 
 interface props {
   onFilterItemClick: (Platform: Platforms) => void;
@@ -18,12 +18,14 @@ interface props {
 function PlatfromFilter({ onFilterItemClick, platformInfoProp }: props) {
   const { platformInfo, platformError, isloading } = useFetchPlatforms();
 
+  if (platformError) return null;
+
   return (
     <>
       {isloading && <SkeletonText />}
-      <Menu>
+      <Menu preventOverflow={true}>
         <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-          Platform
+          {platformInfoProp?.name || "Platform"}
         </MenuButton>
         <MenuList>
           {platformInfo.map((data) => (
@@ -33,6 +35,13 @@ function PlatfromFilter({ onFilterItemClick, platformInfoProp }: props) {
                 onFilterItemClick(data);
               }}
             >
+              <Image
+                boxSize="2rem"
+                borderRadius="full"
+                src={data.image_background}
+                alt=""
+                mr="12px"
+              ></Image>
               {data.name}
             </MenuItem>
           ))}
