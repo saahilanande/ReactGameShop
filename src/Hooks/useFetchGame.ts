@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ApiClient from "../Services/Api-Client";
 import { Genres } from "./useFetchGenres";
+import { GameQuery } from "../App";
 
 export interface Platforms {
   id: number;
@@ -22,11 +23,7 @@ interface Apidata {
   results: Gameinfo[];
 }
 
-const useFetchGame = (
-  genres: Genres | null,
-  platforms: Platforms | null,
-  deps?: any[]
-) => {
+const useFetchGame = (gameQuery: GameQuery, deps?: any[]) => {
   const [gameinfo, setGameInfo] = useState<Gameinfo[]>([]);
 
   const [appError, setAppError] = useState("");
@@ -37,7 +34,10 @@ const useFetchGame = (
     () => {
       setIsLoading(true);
       ApiClient.get<Apidata>("/games", {
-        params: { genres: genres?.id, platforms: platforms?.id },
+        params: {
+          genres: gameQuery.genre?.id,
+          platforms: gameQuery.platform?.id,
+        },
       })
         .then((res) => {
           setGameInfo(res.data.results);
