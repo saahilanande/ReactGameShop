@@ -1,4 +1,4 @@
-import { SimpleGrid } from "@chakra-ui/react";
+import { Heading, SimpleGrid } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import useFetchGame from "../Hooks/useFetchGame";
 import CardSkeleton from "./CardSkeleton";
@@ -14,6 +14,8 @@ function GameGrid({ gameQuery }: props) {
   ]);
 
   const skeletonNo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  if (appError) return <Heading>{appError}</Heading>;
 
   return (
     <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={3}>

@@ -30,7 +30,7 @@ function SearchTextBox({ onSearch }: props) {
             placeholder="search..."
             borderRadius={25}
             variant={"filled"}
-            _hover={{ bg: "teal.700" }}
+            _hover={{ bg: "#C53030" }}
           />
         </InputGroup>
       </form>

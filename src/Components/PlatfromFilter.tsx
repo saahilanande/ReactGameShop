@@ -22,12 +22,15 @@ function PlatfromFilter({ onFilterItemClick, platformInfoProp }: props) {
 
   return (
     <>
-      {isloading && <SkeletonText />}
       <Menu preventOverflow={true}>
-        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+        <MenuButton
+          as={Button}
+          rightIcon={<ChevronDownIcon />}
+          _hover={{ bg: "#C53030" }}
+        >
           {platformInfoProp?.name || "Platform"}
         </MenuButton>
-        <MenuList>
+        <MenuList _hover={{ bg: "#C53030" }}>
           {platformInfo.map((data) => (
             <MenuItem
               key={data.id}

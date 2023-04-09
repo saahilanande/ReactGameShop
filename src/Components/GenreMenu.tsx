@@ -38,7 +38,7 @@ function GenreMenu({ onGenreClick, selectedGenre }: props) {
                   fit={"cover"}
                 ></Image>
                 <Button
-                  _hover={{ bg: "teal.700" }}
+                  _hover={{ bg: "#C53030" }}
                   bgColor={data.id === selectedGenre?.id ? "teal.700" : ""}
                   fontWeight={
                     data.id === selectedGenre?.id ? "extrabold" : "normal"

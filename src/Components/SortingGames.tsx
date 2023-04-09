@@ -21,10 +21,14 @@ function SortingGames({ onSortClick, sortedOrder }: props) {
   return (
     <>
       <Menu preventOverflow={true}>
-        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+        <MenuButton
+          as={Button}
+          rightIcon={<ChevronDownIcon />}
+          _hover={{ bg: "#C53030" }}
+        >
           Order by: {currentSorting?.label || "Relevance"}
         </MenuButton>
-        <MenuList>
+        <MenuList _hover={{ bg: "#C53030" }}>
           {orderList.map((data) => (
             <MenuItem
               key={data.value}

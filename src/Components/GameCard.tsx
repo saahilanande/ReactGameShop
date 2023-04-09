@@ -37,7 +37,7 @@ function GameCard({
         maxW={"sm"}
         margin={3}
         borderRadius={"xl"}
-        _hover={{ bg: "teal.700" }}
+        _hover={{ bg: "#C53030" }}
       >
         <Image
           src={CropImage(background_image)}
@@ -50,7 +50,12 @@ function GameCard({
             <Spacer />
             <CriticBadge rating={metacritic} />
           </HStack>
-          <Heading size="sm" textTransform="uppercase" marginBottom={2}>
+          <Heading
+            size="sm"
+            textTransform="uppercase"
+            marginBottom={2}
+            fontFamily={"sans-serif"}
+          >
             {name} <EmojiRating rating={rating_top} />
           </Heading>
           <TotalDownloads downloads={added} />
