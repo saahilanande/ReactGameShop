@@ -22,11 +22,11 @@ function App() {
       <Grid
         templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
       >
-        <GridItem area="nav" bg="gold">
+        <GridItem area="nav">
           <Navbar />
         </GridItem>
         <Show above="lg">
-          <GridItem area="aside" bg="black">
+          <GridItem area="aside">
             <GenreMenu
               selectedGenre={gameQuery.genre}
               onGenreClick={(genre) => setGameQuery({ ...gameQuery, genre })}
@@ -35,16 +35,21 @@ function App() {
         </Show>
         <GridItem area="main" padding={2}>
           <Flex>
-            <PlatfromFilter
-              platformInfoProp={gameQuery.platform}
-              onFilterItemClick={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
-              }
-            />
-            <SortingGames
-              sortedOrder={gameQuery.order}
-              onSortClick={(order) => setGameQuery({ ...gameQuery, order })}
-            />
+            <Box margin={2} marginLeft={3}>
+              <PlatfromFilter
+                platformInfoProp={gameQuery.platform}
+                onFilterItemClick={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+              />
+            </Box>
+
+            <Box margin={2}>
+              <SortingGames
+                sortedOrder={gameQuery.order}
+                onSortClick={(order) => setGameQuery({ ...gameQuery, order })}
+              />
+            </Box>
           </Flex>
 
           <GameGrid gameQuery={gameQuery} />

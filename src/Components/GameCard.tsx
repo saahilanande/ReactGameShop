@@ -31,7 +31,12 @@ function GameCard({
 }: props) {
   return (
     <>
-      <Card maxW={"sm"} margin={3} borderRadius={"xl"}>
+      <Card
+        maxW={"sm"}
+        margin={3}
+        borderRadius={"xl"}
+        _hover={{ bg: "teal.700" }}
+      >
         <Image
           src={CropImage(background_image)}
           alt=""

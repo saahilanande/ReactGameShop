@@ -6,15 +6,13 @@ function SearchTextBox() {
       <InputGroup>
         <InputLeftElement
           pointerEvents="none"
-          children={<Search2Icon color="blackAlpha.600" marginTop={2} />}
+          children={<Search2Icon color="blackAlpha.600" />}
         />
         <Input
           placeholder="search..."
-          size={"lg"}
-          focusBorderColor="blackAlpha.800"
           borderRadius={25}
-          borderColor={"blackAlpha.600"}
-          borderWidth={3}
+          variant={"filled"}
+          _hover={{ bg: "teal.700" }}
         />
       </InputGroup>
     </>
