@@ -28,6 +28,7 @@ function GameGrid({ gameQuery }: props) {
           key={data.id}
           metacritic={data.metacritic}
           added={data.added}
+          rating_top={data.rating_top}
         />
       ))}
     </SimpleGrid>

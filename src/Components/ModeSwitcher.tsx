@@ -1,4 +1,4 @@
-import { Button, useColorMode, Switch } from "@chakra-ui/react";
+import { useColorMode, Switch } from "@chakra-ui/react";
 
 function ModeSwitcher() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -6,7 +6,7 @@ function ModeSwitcher() {
   return (
     <>
       <Switch onChange={toggleColorMode}>
-        Toggle {colorMode === "light" ? "Dark" : "Light"}
+        {colorMode === "light" ? "Light" : "Dark"}
       </Switch>
     </>
   );

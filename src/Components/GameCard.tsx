@@ -11,6 +11,7 @@ import { Platforms } from "../Hooks/useFetchGame";
 import CriticBadge from "./CriticBadge";
 import TotalDownloads from "./TotalDownloads";
 import CropImage from "../Services/Url-Client";
+import EmojiRating from "./EmojiRating";
 
 interface props {
   id: number;
@@ -19,10 +20,11 @@ interface props {
   metacritic: number;
   added: number;
   platforms: { platform: Platforms }[];
+  rating_top: number;
 }
 
 function GameCard({
-  id,
+  rating_top,
   name,
   background_image,
   platforms,
@@ -49,7 +51,7 @@ function GameCard({
             <CriticBadge rating={metacritic} />
           </HStack>
           <Heading size="sm" textTransform="uppercase" marginBottom={2}>
-            {name}
+            {name} <EmojiRating rating={rating_top} />
           </Heading>
           <TotalDownloads downloads={added} />
         </CardBody>
