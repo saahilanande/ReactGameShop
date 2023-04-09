@@ -1,4 +1,6 @@
 const CropImage = (url: String) => {
+  if (!url) return "";
+
   const target = "media/";
   const indexOfSlice = url.indexOf(target) + target.length;
   return (

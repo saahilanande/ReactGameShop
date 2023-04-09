@@ -37,6 +37,7 @@ const useFetchGame = (gameQuery: GameQuery, deps?: any[]) => {
         params: {
           genres: gameQuery.genre?.id,
           platforms: gameQuery.platform?.id,
+          ordering: gameQuery.order,
         },
       })
         .then((res) => {
