@@ -27,6 +27,7 @@ function SortingGames({ onSortClick, sortedOrder }: props) {
         <MenuList>
           {orderList.map((data) => (
             <MenuItem
+              key={data.value}
               onClick={() => onSortClick(data.value)}
               value={data.value}
             >

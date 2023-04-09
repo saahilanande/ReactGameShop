@@ -4,13 +4,17 @@ import AvatarMenu from "./AvatarMenu";
 import ModeSwitcher from "./ModeSwitcher";
 import SearchTextBox from "./SearchTextBox";
 
-function Navbar() {
+interface props {
+  handleSearch: (search: string) => void;
+}
+
+function Navbar({ handleSearch }: props) {
   return (
     <>
       <HStack spacing="13px" marginLeft={5} marginRight={5}>
         <Img src={logo} boxSize={"60px"} padding={1}></Img>
         <Center flex={"auto 100"}>
-          <SearchTextBox />
+          <SearchTextBox onSearch={handleSearch} />
         </Center>
         <Spacer />
         <ModeSwitcher />

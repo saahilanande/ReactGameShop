@@ -16,7 +16,7 @@ function GameGrid({ gameQuery }: props) {
   const skeletonNo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} spacing={3}>
+    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={3}>
       {isloading && skeletonNo.map((id) => <CardSkeleton key={id} />)}
 
       {gameinfo.map((data) => (

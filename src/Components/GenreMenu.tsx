@@ -30,13 +30,16 @@ function GenreMenu({ onGenreClick, selectedGenre }: props) {
         <List padding={3}>
           {genreInfo.map((data) => (
             <ListItem key={data.id}>
-              <HStack spacing={2} padding={2}>
+              <HStack spacing={1} padding={1}>
                 <Image
                   boxSize={"35px"}
                   src={data.image_background}
                   borderRadius={5}
+                  fit={"cover"}
                 ></Image>
                 <Button
+                  _hover={{ bg: "teal.700" }}
+                  bgColor={data.id === selectedGenre?.id ? "teal.700" : ""}
                   fontWeight={
                     data.id === selectedGenre?.id ? "extrabold" : "normal"
                   }
