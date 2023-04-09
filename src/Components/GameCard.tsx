@@ -43,12 +43,12 @@ function GameCard({
           borderTopRadius={"xl"}
         ></Image>
         <CardBody>
-          <HStack flex={"wrap"}>
+          <HStack flex={"wrap"} marginBottom={1}>
             <PlatformIcon platformIcon={platforms.map((p) => p.platform)} />
             <Spacer />
             <CriticBadge rating={metacritic} />
           </HStack>
-          <Heading size="sm" textTransform="uppercase">
+          <Heading size="sm" textTransform="uppercase" marginBottom={2}>
             {name}
           </Heading>
           <TotalDownloads downloads={added} />
