@@ -6,7 +6,7 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  Box,
+  Link,
 } from "@chakra-ui/react";
 
 import logo from "../assets/avatar.jpg";
@@ -26,14 +26,20 @@ function AvatarMenu() {
         </MenuButton>
         <MenuList>
           <MenuItem>
-            <a href="https://www.linkedin.com/in/saahilpralhad/">linkedin</a>
+            <Link href="https://www.linkedin.com/in/saahilpralhad/" isExternal>
+              linkedin
+            </Link>
           </MenuItem>
           <MenuItem>
-            <a href="https://saahilanande.netlify.app/">portfolio</a>
+            <Link href="https://saahilanande.netlify.app/" isExternal>
+              portfolio
+            </Link>
           </MenuItem>
           <MenuDivider />
           <MenuItem>
-            <a href="https://github.com/saahilanande">GitHub</a>
+            <Link href="https://github.com/saahilanande" isExternal>
+              GitHub
+            </Link>
           </MenuItem>
         </MenuList>
       </Menu>
