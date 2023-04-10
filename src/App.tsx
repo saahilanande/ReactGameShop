@@ -26,6 +26,15 @@ function App() {
       >
         <GridItem area="nav">
           <Navbar
+            resetFilter={() =>
+              setGameQuery({
+                ...gameQuery,
+                search: "",
+                order: "",
+                platform: null,
+                genre: null,
+              })
+            }
             handleSearch={(search) => setGameQuery({ ...gameQuery, search })}
           />
         </GridItem>
