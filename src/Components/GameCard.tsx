@@ -1,10 +1,19 @@
 import {
+  Button,
   Card,
   CardBody,
   HStack,
   Heading,
   Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Spacer,
+  useDisclosure,
 } from "@chakra-ui/react";
 import PlatformIcon from "./PlatformIcon";
 import { Platforms } from "../Hooks/useFetchGame";
@@ -31,9 +40,12 @@ function GameCard({
   metacritic,
   added,
 }: props) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Card
+        onClick={onOpen}
         maxW={"sm"}
         margin={3}
         borderRadius={"xl"}
@@ -58,9 +70,21 @@ function GameCard({
           >
             {name} <EmojiRating rating={rating_top} />
           </Heading>
-          <TotalDownloads downloads={added} />
+            <TotalDownloads downloads={added} />
         </CardBody>
       </Card>
+
+      <Modal onClose={onClose} isOpen={isOpen} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>{name}</ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   );
 }
