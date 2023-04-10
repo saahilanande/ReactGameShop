@@ -25,10 +25,16 @@ function AvatarMenu() {
           <Avatar size={"sm"} src={logo} />
         </MenuButton>
         <MenuList>
-          <MenuItem><a href="https://www.linkedin.com/in/saahilpralhad/">linkedin</a></MenuItem>
-          <MenuItem><a href="https://saahilanande.netlify.app/">portfolio</a></MenuItem>
+          <MenuItem>
+            <a href="https://www.linkedin.com/in/saahilpralhad/">linkedin</a>
+          </MenuItem>
+          <MenuItem>
+            <a href="https://saahilanande.netlify.app/">portfolio</a>
+          </MenuItem>
           <MenuDivider />
-          <MenuItem>Saahilanande21@gmail.com</MenuItem>
+          <MenuItem>
+            <a href="https://github.com/saahilanande">GitHub</a>
+          </MenuItem>
         </MenuList>
       </Menu>
     </>
