@@ -17,6 +17,7 @@ export interface Gameinfo {
   added: number;
   platforms: { platform: Platforms }[];
   rating_top: number;
+  released: string;
 }
 
 interface Apidata {

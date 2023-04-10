@@ -1,17 +1,9 @@
 import {
-  Button,
   Card,
   CardBody,
   HStack,
   Heading,
   Image,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Spacer,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -21,6 +13,7 @@ import CriticBadge from "./CriticBadge";
 import TotalDownloads from "./TotalDownloads";
 import CropImage from "../Services/Url-Client";
 import EmojiRating from "./EmojiRating";
+import GameModal from "./GameModal";
 
 interface props {
   id: number;
@@ -30,6 +23,7 @@ interface props {
   added: number;
   platforms: { platform: Platforms }[];
   rating_top: number;
+  released: string;
 }
 
 function GameCard({
@@ -39,6 +33,7 @@ function GameCard({
   platforms,
   metacritic,
   added,
+  released,
 }: props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -49,7 +44,7 @@ function GameCard({
         maxW={"sm"}
         margin={3}
         borderRadius={"xl"}
-        _hover={{ bg: "#C53030" }}
+        _hover={{ bg: "#C53030", cursor: "pointer" }}
       >
         <Image
           src={CropImage(background_image)}
@@ -70,21 +65,18 @@ function GameCard({
           >
             {name} <EmojiRating rating={rating_top} />
           </Heading>
-            <TotalDownloads downloads={added} />
+          <TotalDownloads downloads={added} />
         </CardBody>
       </Card>
-
-      <Modal onClose={onClose} isOpen={isOpen} isCentered>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>{name}</ModalBody>
-          <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      <GameModal
+        released={released}
+        topRating={rating_top}
+        critScore={metacritic}
+        gameName={name}
+        isOpen={isOpen}
+        onClose={onClose}
+        imageBack={background_image}
+      />
     </>
   );
 }

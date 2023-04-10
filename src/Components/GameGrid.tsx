@@ -31,6 +31,7 @@ function GameGrid({ gameQuery }: props) {
           metacritic={data.metacritic}
           added={data.added}
           rating_top={data.rating_top}
+          released={data.released}
         />
       ))}
     </SimpleGrid>
