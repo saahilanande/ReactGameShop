@@ -26,7 +26,7 @@ function AvatarMenu() {
         </MenuButton>
         <MenuList>
           <MenuItem>
-            <Link href="https://www.linkedin.com/in/saahilpralhad/" isExternal>
+            <Link href="https://www.linkedin.com/in/saahilanande/" isExternal>
               linkedin
             </Link>
           </MenuItem>
